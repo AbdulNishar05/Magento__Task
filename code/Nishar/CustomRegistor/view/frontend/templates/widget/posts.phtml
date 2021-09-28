@@ -1,25 +1,24 @@
 <?php if ($block->getData('posts')):
     $type = $block->getDetail();
-    $value = $this->getLayout()
-        ->createBlock('Magento\Cms\Block\Block')
-        ->setBlockId('Type_one')
-        ->toHtml();
-    $value1 = $this->getLayout()
-        ->createBlock('Magento\Cms\Block\Block')
-        ->setBlockId('Type_two')
-        ->toHtml();
-    if ($type == "Type Two") {
-        ?>
-	    <h1 class='posts'><?php echo $block->getData('posts'); ?></h1>
-            <h2><?php echo $value1;?>
-	<?php
-    }
-    if ($type == "Type One") {
-        ?>
-	    <h1 class='posts'><?php echo $block->getData('posts'); ?></h1>
-            <h2><?php echo $value;?>
 
-	<?php
+    if ($type == 1) {
+        ?>
+		    <h1 class='posts'><?php echo $block->getData('posts'); ?></h1>
+	            <h2><?php echo $this->getLayout()
+            ->createBlock('Magento\Cms\Block\Block')
+            ->setBlockId('Type_two')
+            ->toHtml(); ?>
+		<?php
+    }
+    if ($type == 0) {
+        ?>
+		    <h1 class='posts'><?php echo $block->getData('posts'); ?></h1>
+	            <h2><?php echo $this->getLayout()
+            ->createBlock('Magento\Cms\Block\Block')
+            ->setBlockId('Type_one')
+            ->toHtml(); ?>
+
+		<?php
     }
     ?>
-	<?php endif;?>
+		<?php endif;?>
