@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:helloworld:Magento_Widget:etc/widget.xsd">
+    <widget class="Nishar\CustomRegistor\Block\Widget\Posts" id="posts">
+        <label>Blog Posts</label>
+        <description>Posts</description>
+        <parameters>
+            <parameter name="posts" sort_order="10" visible="true" xsi:type="text">
+                <label>Custom Label</label>
+            </parameter>
+        </parameters>
+    </widget>
+
+<widget class="Nishar\CustomRegistor\Block\Widget\Posts" id="post">
+<label>Blog</label>
+<description>Post</description>
+<parameters>
+    <parameter name="post" sort_order="10" visible="true" xsi:type="text">
+        <label>Custom Label</label>
+    </parameter>
+</parameters>
+</widget>
+</widgets>
