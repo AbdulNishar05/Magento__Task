@@ -1,7 +1,9 @@
 <?php
 namespace Nishar\CustomRegistor\Block\Widget;
 
-use Magento\Framework\View\Element\Template;
+use Magento\Customer\Model\Customer as customerdata;
+use Magento\Customer\Model\Session as session;
+use Magento\Framework\View\Element\Template\Context as context;
 use Magento\Widget\Block\BlockInterface;
 
 class Posts extends \Magento\Framework\View\Element\Template implements BlockInterface
@@ -11,21 +13,27 @@ class Posts extends \Magento\Framework\View\Element\Template implements BlockInt
 
     protected $customer;
 
-    public function __construct(\Magento\Customer\Model\Session $customer,Template\Context $context,\Magento\Customer\Model\Customer $customerType, array $data = []) 
+    public function __construct(session $customer, context $context, customerdata $customerData, array $data = [])
     {
         $this->customer = $customer;
-        $this->customerType = $customerType;
+        $this->customerData = $customerData;
         parent::__construct($context, $data);
 
     }
+
+    /**
+     * Getting the Customer Type
+     *
+     * @return string
+     */
 
     public function getDetail()
     {
         $customer = $this->customer->getCustomer();
         $customerID = $customer->getId();
-        $customerObj = $this->customerType->load($customerID);
-        $customerFirstName = $customerObj->getType();
-        return $customerFirstName;
+        $customerType = $this->customerData->load($customerID);
+        $customerTypeValue = $customerType->getType();
+        return $customerTypeValue;
 
     }
 }
